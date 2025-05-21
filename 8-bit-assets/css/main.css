@@ -1,0 +1,323 @@
+  @font-face {
+    font-family: 'Pixelify Sans';
+     src: url('../fonts/PixelifySans-VariableFont_wght.ttf') format('truetype'); /* <-- CHANGE THIS LINE */
+    font-weight: normal;
+    font-style: normal;
+}
+        /* Custom CSS for the retro look */
+        body {
+            font-family: 'Pixelify Sans', cursive; /* Pixelify Sans for the entire body */
+            background-color: #000000; /* Black background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Full viewport height */
+            margin: 0;
+            overflow: hidden; /* Prevent scrollbars */
+            color: #00ff00; /* Retro green text */
+            flex-direction: column; /* For vertical stacking of loading and portfolio */
+        }
+
+        /* --- Loading Screen Styles --- */
+        #loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000; /* Ensure it's on top */
+            transition: opacity 1s ease-out;
+        }
+
+        .loading-container {
+            border: 4px solid #00ff00; /* Retro green border */
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 0 15px #00ff00; /* Green glow effect */
+            background-color: #1a1a1a; /* Dark background for the container */
+            border-radius: 8px; /* Slightly rounded corners */
+            max-width: 90vw; /* Responsive width */
+            width: 400px; /* Max width for desktop */
+            box-sizing: border-box; /* Include padding in width */
+        }
+
+        .loading-text {
+            font-size: clamp(1.2rem, 4vw, 2.5rem); /* Responsive font size */
+            margin-bottom: 20px;
+            text-shadow: 2px 2px #008000; /* Shadow for depth */
+            animation: flicker 1.5s infinite alternate; /* Flicker effect */
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 30px;
+            background-color: #333333; /* Dark grey for empty bar */
+            border: 2px solid #00ff00; /* Green border for the bar */
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%; /* Initial width */
+            background-color: #00ff00; /* Green fill */
+            transition: width 0.1s linear; /* Smooth transition for progress */
+            box-shadow: inset 0 0 8px #008000; /* Inner glow */
+        }
+
+        .percentage-text {
+            font-size: clamp(1rem, 3vw, 1.8rem); /* Responsive font size */
+            text-shadow: 1px 1px #008000;
+        }
+
+        /* Keyframe animations */
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+            70% { opacity: 1; }
+            80% { opacity: 0.9; }
+        }
+
+        /* --- Portfolio Styles --- */
+        #main-portfolio {
+            display: none; /* Hidden by default, shown after loading */
+            flex-direction: column;
+            width: 95vw; /* Responsive width */
+            max-width: 1000px; /* Max width for desktop */
+            height: 90vh; /* Responsive height */
+            max-height: 700px; /* Max height for desktop */
+            border: 4px solid #00ff00;
+            box-shadow: 0 0 20px #00ff00;
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            overflow: hidden; /* For tab content */
+            position: relative; /* For positioning matrix canvas */
+            transition: background-color 0.5s ease; /* For disco effect */
+        }
+
+        .tab-navigation {
+            display: flex;
+            justify-content: flex-start;
+            border-bottom: 2px solid #00ff00;
+            padding: 0 10px;
+            background-color: #0d0d0d;
+        }
+
+        .tab-button {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+            margin-right: 5px;
+            background-color: #2a2a2a;
+            color: #00ff00;
+            border: 2px solid #00ff00;
+            border-bottom: none;
+            font-size: clamp(0.8rem, 2vw, 1.2rem);
+            transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+            text-shadow: 1px 1px #008000;
+        }
+
+        .tab-button:hover {
+            background-color: #00ff00;
+            color: #000000;
+            box-shadow: 0 0 10px #00ff00;
+        }
+
+        .tab-button.active {
+            background-color: #00ff00;
+            color: #000000;
+            box-shadow: 0 0 15px #00ff00;
+            position: relative;
+            z-index: 1;
+            border-bottom: 2px solid #00ff00; /* Match border of content area */
+        }
+
+        .tab-content {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto; /* Enable scrolling for content */
+            display: none; /* Hidden by default */
+            font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+            line-height: 1.6;
+            color: #00ff00;
+            text-shadow: 0.5px 0.5px #008000;
+        }
+
+        .tab-content.active {
+            display: block; /* Show active content */
+        }
+
+        /* --- Terminal Specific Styles --- */
+        #terminal-output {
+            background-color: #000000;
+            border: 2px solid #00ff00;
+            padding: 15px;
+            min-height: 250px; /* Minimum height for terminal output */
+            max-height: 400px; /* Max height before scrolling */
+            overflow-y: auto;
+            white-space: pre-wrap; /* Preserve whitespace and wrap text */
+            word-wrap: break-word;
+            font-family: 'Pixelify Sans', monospace; /* Set terminal output to Pixelify Sans */
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: #00ff00;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            box-shadow: inset 0 0 10px #008000; /* Inner glow */
+        }
+
+        #terminal-output img {
+            max-width: 100%; /* Ensure image fits within terminal output */
+            height: auto;
+            display: block; /* Remove extra space below image */
+            margin: 10px auto; /* Center image and add some margin */
+            border: 2px solid #008000; /* Retro border for image */
+            border-radius: 4px;
+        }
+
+        #terminal-input-container {
+            display: flex;
+            align-items: center;
+            font-family: 'Pixelify Sans', monospace; /* Set terminal input container to Pixelify Sans */
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: #00ff00;
+        }
+
+        #terminal-input-container span {
+            margin-right: 5px;
+        }
+
+        #terminal-input {
+            flex-grow: 1;
+            background-color: #000000;
+            border: 2px solid #00ff00;
+            padding: 8px;
+            color: #00ff00;
+            outline: none; /* Remove default focus outline */
+            caret-color: #00ff00; /* Green cursor */
+            border-radius: 4px;
+            box-shadow: 0 0 5px #008000;
+            font-family: 'Pixelify Sans', monospace; /* Set terminal input to Pixelify Sans */
+        }
+
+        /* Custom scrollbar for retro feel */
+        ::-webkit-scrollbar {
+            width: 12px;
+            height: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+            border-radius: 10px;
+            border: 1px solid #008000;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #00ff00;
+            border-radius: 10px;
+            border: 2px solid #008000;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00cc00;
+        }
+
+        /* Content specific styles */
+        .tab-content h2 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            margin-bottom: 15px;
+            text-shadow: 1px 1px #008000;
+            border-bottom: 2px dashed #008000;
+            padding-bottom: 5px;
+        }
+
+        .tab-content p, .tab-content ul {
+            margin-bottom: 10px;
+        }
+
+        .tab-content ul {
+            list-style-type: '>'; /* Retro bullet point */
+            padding-left: 20px;
+        }
+
+        .tab-content li {
+            margin-bottom: 5px;
+        }
+
+        .project-item {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px dashed #008000;
+            border-radius: 5px;
+            background-color: #0d0d0d;
+        }
+
+        /* --- Matrix Rain Canvas Styles --- */
+        #matrix-canvas {
+            position: absolute; /* Position over the portfolio content */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Slightly transparent black */
+            z-index: 500; /* Below loading screen, above portfolio content */
+            display: none; /* Hidden by default */
+            border-radius: 10px; /* Match portfolio border radius */
+        }
+
+        /* --- Disco Mode Styles --- */
+        @keyframes disco-flash {
+            0%   { background-color: #1a1a1a; }
+            20%  { background-color: #00ff00; }
+            40%  { background-color: #00ffff; }
+            60%  { background-color: #ff00ff; }
+            80%  { background-color: #ffff00; }
+            100% { background-color: #1a1a1a; }
+        }
+
+        .disco-mode {
+            animation: disco-flash 1.5s infinite alternate;
+        }
+
+        /* --- Glitch Effect Styles --- */
+        @keyframes glitch-effect {
+            0% {
+                transform: translate(0, 0);
+                filter: hue-rotate(0deg);
+            }
+            20% {
+                transform: translate(-2px, 2px);
+                filter: hue-rotate(90deg);
+            }
+            40% {
+                transform: translate(2px, -2px);
+                filter: hue-rotate(180deg);
+            }
+            60% {
+                transform: translate(-1px, 1px);
+                filter: hue-rotate(270deg);
+            }
+            80% {
+                transform: translate(1px, -1px);
+                filter: hue-rotate(360deg);
+            }
+            100% {
+                transform: translate(0, 0);
+                filter: hue-rotate(0deg);
+            }
+        }
+
+        .glitch-active {
+            animation: glitch-effect 0.2s linear infinite;
+        }
+
+        /* --- Lights Effect Styles --- */
+        .lights-on {
+            filter: brightness(1.5); /* Increase brightness */
+            transition: filter 0.5s ease-in-out;
+        }

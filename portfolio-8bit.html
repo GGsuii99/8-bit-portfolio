@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro Portfolio</title>
+    
+    <script src="8-bit-assets/js/tailwind.js"></script>
+    <script src="8-bit-assets/js/tone.min.js"></script>
+    <link href="8-bit-assets/css/main.css" rel="stylesheet">
+    <style>
+      
+    </style>
+</head>
+<body>
+    <div id="loading-overlay">
+        <div class="loading-container">
+            <div class="loading-text" id="loadingScreenText">LOADING...</div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <div class="percentage-text" id="percentageText">0%</div>
+        </div>
+    </div>
+
+    <div id="main-portfolio" class="hidden">
+        <div class="tab-navigation">
+            <button class="tab-button active" data-tab="about">ABOUT</button>
+            <button class="tab-button" data-tab="projects">PROJECTS</button>
+            <button class="tab-button" data-tab="terminal">TERMINAL</button>
+            <button class="tab-button" data-tab="contact">CONTACT</button>
+        </div>
+
+        <div id="about-content" class="tab-content active">
+            <h2>[ ABOUT_ME ]</h2>
+          <p>Hello! I'm a coder who enjoys building websites with HTML and CSS. I focus on creating responsive, functional, and visually appealing designs.</p>
+<p>I'm passionate about front-end development and always aim to deliver smooth, user-friendly experiences. Whether it’s a portfolio, landing page, or web app, I love turning ideas into reality.</p>
+<p>Outside of coding, I enjoy learning new tech, solving problems, and exploring creative projects.</p>
+
+        </div>
+
+        <div id="projects-content" class="tab-content">
+            <h2>[ PROJECTS ]</h2>
+            <div class="project-item">
+                <h3>> Project: 8-Bit Portfolio</h3>
+                <p>A web-based portfolio</p>
+                <ul>
+                    <li>Technologies: HTML5 Canvas, JavaScript</li>
+                    <li>Features: Particle effects, parallax scrolling, dynamic star generation.</li>
+                </ul>
+            </div>
+            <div class="project-item">
+                <h3>> Project: Retro Arcade Game</h3>
+                <p>A classic 2D arcade game with pixel-art graphics and chiptune sound effects. Developed as a personal challenge to recreate a vintage gaming experience.</p>
+                <ul>
+                    <li>Technologies: JavaScript (ES6), CSS3 Animations</li>
+                    <li>Features: Score tracking, multiple levels, enemy AI.</li>
+                </ul>
+            </div>
+            <div class="project-item">
+                <h3>> Project: Data Visualization Dashboard</h3>
+                <p>An interactive dashboard displaying complex datasets in a user-friendly, retro-futuristic interface. Designed for data analysis and reporting.</p>
+                <ul>
+                    <li>Technologies: React, D3.js, Tailwind CSS</li>
+                    <li>Features: Dynamic charts, filterable data, responsive design.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="terminal-content" class="tab-content">
+            <h2>[ COMMAND_LINE_INTERFACE ]</h2>
+            <div id="terminal-output"></div>
+            <div id="terminal-input-container">
+                <span>C:\USER></span>
+                <input type="text" id="terminal-input" autofocus>
+            </div>
+        </div>
+
+        <div id="contact-content" class="tab-content">
+            <h2>[ CONTACT_ME ]</h2>
+            <p>If you'd like to connect or discuss a project, feel free to reach out through the following channels:</p>
+            <ul>
+                <li>Email: <span style="color: #00ffff;">developer@retro.com</span></li>
+                <li>GitHub: <span style="color: #00ffff;">github.com/retro-dev</span></li>
+                <li>LinkedIn: <span style="color: #00ffff;">linkedin.com/in/retro-dev</span></li>
+                <li>Twitter: <span style="color: #00ffff;">@RetroDev</span></li>
+            </ul>
+            <p>Looking forward to hearing from you!</p>
+        </div>
+
+        <canvas id="matrix-canvas"></canvas>
+    </div>
+
+    <script src="8-bit-assets/js/main.js">
+     
+    </script>
+</body>
+</html>
